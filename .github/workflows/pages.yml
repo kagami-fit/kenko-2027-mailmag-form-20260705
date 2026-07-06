@@ -43,6 +43,8 @@ jobs:
           cp assets/seminar-icon-improvement-imagegen2.png _site/kenko-2027-0729/assets/
 
       - name: Publish gh-pages branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd _site
           git init
