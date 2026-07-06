@@ -1,0 +1,647 @@
+<meta charset="utf-8">
+<style>
+  .bp-lp {
+    --bp-ink: #20252b;
+    --bp-muted: #64707c;
+    --bp-soft: #f4f6f8;
+    --bp-surface: #ffffff;
+    --bp-line: #dfe5ea;
+    --bp-line-strong: #c9d2da;
+    --bp-blue: #17507d;
+    --bp-teal: #01a5ab;
+    --bp-pink: #dc4a89;
+    --bp-pink-deep: #c81f61;
+    --bp-orange: #f29a3f;
+    --bp-shadow: 0 18px 48px rgba(31, 41, 55, 0.09);
+    --bp-radius: 6px;
+    color: var(--bp-ink);
+    background: var(--bp-soft);
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.75;
+    letter-spacing: 0;
+    margin: 0 calc(50% - 50vw);
+    padding: 28px 20px 38px;
+  }
+
+  .bp-lp * {
+    box-sizing: border-box;
+  }
+
+  .bp-lp img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .bp-lp h1,
+  .bp-lp h2,
+  .bp-lp h3,
+  .bp-lp p,
+  .bp-lp li,
+  .bp-lp span,
+  .bp-lp strong {
+    overflow-wrap: anywhere;
+  }
+
+  .bp-lp-shell {
+    width: min(1220px, 100%);
+    margin: 0 auto;
+  }
+
+  .bp-lp-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 420px);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .bp-lp-main {
+    display: grid;
+    gap: 24px;
+    min-width: 0;
+  }
+
+  .bp-lp-hero,
+  .bp-lp-panel,
+  .bp-lp-form-panel {
+    background: var(--bp-surface);
+    border: 1px solid var(--bp-line);
+    border-radius: var(--bp-radius);
+    box-shadow: var(--bp-shadow);
+  }
+
+  .bp-lp-hero {
+    overflow: hidden;
+  }
+
+  .bp-lp-hero-image {
+    background: #ffffff;
+  }
+
+  .bp-lp-hero-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .bp-lp-hero-copy {
+    padding: 36px 40px;
+  }
+
+  .bp-lp-eyebrow {
+    margin: 0 0 10px;
+    color: var(--bp-pink-deep);
+    font-family: Inter, "Noto Sans JP", sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .bp-lp h1 {
+    max-width: 720px;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.28;
+    letter-spacing: 0;
+  }
+
+  .bp-lp-hero-copy > p:not(.bp-lp-eyebrow) {
+    max-width: 850px;
+    margin: 18px 0 0;
+    color: #4c5661;
+    font-size: 16px;
+  }
+
+  .bp-lp-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 30px;
+    border: 1px solid var(--bp-line-strong);
+    border-radius: var(--bp-radius);
+    overflow: hidden;
+  }
+
+  .bp-lp-summary > div {
+    min-height: 92px;
+    padding: 15px;
+    border-right: 1px solid var(--bp-line);
+  }
+
+  .bp-lp-summary > div:last-child {
+    border-right: 0;
+  }
+
+  .bp-lp-summary span,
+  .bp-lp-summary strong {
+    display: block;
+  }
+
+  .bp-lp-summary span {
+    color: var(--bp-blue);
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .bp-lp-summary strong {
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.45;
+  }
+
+  .bp-lp-panel {
+    padding: 38px 42px;
+  }
+
+  .bp-lp-heading h2 {
+    position: relative;
+    margin: 0 0 18px;
+    padding-left: 18px;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+
+  .bp-lp-heading h2::before {
+    content: "";
+    position: absolute;
+    top: 0.18em;
+    bottom: 0.16em;
+    left: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--bp-pink), var(--bp-orange));
+    border-radius: 99px;
+  }
+
+  .bp-lp-body {
+    display: grid;
+    gap: 16px;
+  }
+
+  .bp-lp-body p {
+    max-width: 850px;
+    margin: 0;
+    color: #46515c;
+    font-size: 15px;
+    font-weight: 650;
+  }
+
+  .bp-lp-callout {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 18px;
+    align-items: center;
+    margin-top: 28px;
+    padding: 18px;
+    background: #f7fafc;
+    border: 1px solid var(--bp-line);
+    border-left: 5px solid var(--bp-teal);
+    border-radius: var(--bp-radius);
+  }
+
+  .bp-lp-callout img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+  }
+
+  .bp-lp-callout p {
+    margin: 0;
+    color: #3f4851;
+    font-weight: 800;
+  }
+
+  .bp-lp-program {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--bp-line-strong);
+    border-radius: var(--bp-radius);
+    overflow: hidden;
+  }
+
+  .bp-lp-program-item {
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    min-width: 0;
+    padding: 30px 26px;
+    border-right: 1px solid var(--bp-line);
+    text-align: center;
+  }
+
+  .bp-lp-program-item:last-child {
+    border-right: 0;
+  }
+
+  .bp-lp-program-item img {
+    width: 148px;
+    height: 148px;
+    object-fit: contain;
+    margin: 0 auto 18px;
+  }
+
+  .bp-lp-program-item h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .bp-lp-program-item p {
+    max-width: 240px;
+    margin: 0 auto;
+    color: #46515c;
+    font-size: 14px;
+  }
+
+  .bp-lp-recommend {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .bp-lp-recommend li {
+    position: relative;
+    min-height: 42px;
+    padding: 8px 0 8px 38px;
+    color: #3f4851;
+    border-bottom: 1px solid var(--bp-line);
+    font-size: 15px;
+    font-weight: 750;
+  }
+
+  .bp-lp-recommend li:last-child {
+    border-bottom: 0;
+  }
+
+  .bp-lp-recommend li::before {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--bp-teal);
+    border-radius: 999px;
+  }
+
+  .bp-lp-recommend li::after {
+    content: "";
+    position: absolute;
+    top: 19px;
+    left: 7px;
+    width: 8px;
+    height: 5px;
+    border-bottom: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    transform: rotate(-45deg);
+  }
+
+  .bp-lp-form-panel {
+    position: sticky;
+    top: 96px;
+    padding: 34px 30px;
+  }
+
+  .bp-lp-form-panel .bp-lp-heading h2 {
+    font-size: 25px;
+  }
+
+  .bp-lp-form-panel .bp-lp-heading p {
+    margin: 0 0 18px;
+    color: var(--bp-muted);
+    font-size: 14px;
+  }
+
+  .bp-lp-form-note {
+    margin: 18px 0 0;
+    color: var(--bp-muted);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .bp-lp .wpcf7 form {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+  }
+
+  .bp-lp .wpcf7 p {
+    margin: 0;
+  }
+
+  .bp-lp .wpcf7 label {
+    display: grid;
+    gap: 7px;
+    margin: 0;
+    color: #2e363e;
+    font-size: 13px;
+    font-weight: 900;
+  }
+
+  .bp-lp .wpcf7 .bp-required {
+    display: inline-flex;
+    align-items: center;
+    min-height: 18px;
+    margin-left: 6px;
+    padding: 0 7px;
+    color: #ffffff;
+    background: var(--bp-pink-deep);
+    border-radius: 999px;
+    font-size: 10px;
+    line-height: 1;
+    vertical-align: 1px;
+  }
+
+  .bp-lp .wpcf7 input[type="text"],
+  .bp-lp .wpcf7 input[type="email"],
+  .bp-lp .wpcf7 input[type="tel"],
+  .bp-lp .wpcf7 select,
+  .bp-lp .wpcf7 textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 12px;
+    color: var(--bp-ink);
+    background: #ffffff;
+    border: 1px solid #cfd7df;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  .bp-lp .wpcf7 textarea {
+    min-height: 120px;
+    padding: 12px;
+    resize: vertical;
+  }
+
+  .bp-lp .wpcf7 input:focus,
+  .bp-lp .wpcf7 select:focus,
+  .bp-lp .wpcf7 textarea:focus {
+    border-color: var(--bp-pink);
+    box-shadow: 0 0 0 4px rgba(220, 74, 137, 0.14);
+  }
+
+  .bp-lp .wpcf7 .wpcf7-radio,
+  .bp-lp .wpcf7 .wpcf7-checkbox {
+    display: grid;
+    gap: 8px;
+    padding: 14px;
+    background: #fbfcfd;
+    border: 1px solid var(--bp-line);
+    border-radius: var(--bp-radius);
+  }
+
+  .bp-lp .wpcf7 .wpcf7-list-item {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    align-items: center;
+    min-height: 42px;
+    gap: 8px;
+    margin: 0;
+    padding: 8px 10px;
+    background: #ffffff;
+    border: 1px solid #d8dee4;
+    border-radius: 4px;
+  }
+
+  .bp-lp .wpcf7 .wpcf7-list-item label {
+    display: contents;
+  }
+
+  .bp-lp .wpcf7 input[type="radio"],
+  .bp-lp .wpcf7 input[type="checkbox"] {
+    width: 16px;
+    min-height: 16px;
+    margin: 0;
+    accent-color: var(--bp-pink-deep);
+  }
+
+  .bp-lp .wpcf7 .wpcf7-list-item-label {
+    color: #2e363e;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .bp-lp .wpcf7 .wpcf7-acceptance .wpcf7-list-item {
+    border: 0;
+    padding: 0;
+  }
+
+  .bp-lp .wpcf7 input[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 56px;
+    margin-top: 10px;
+    padding: 0 32px;
+    color: #ffffff;
+    background: var(--bp-pink-deep);
+    border: 1px solid var(--bp-pink-deep);
+    border-radius: var(--bp-radius);
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+
+  .bp-lp .wpcf7 form.sent .wpcf7-response-output {
+    color: var(--bp-blue);
+    background: #f3f8fc;
+    border-color: #d5e4ef;
+  }
+
+  @media (max-width: 1100px) {
+    .bp-lp-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .bp-lp-form-panel {
+      position: static;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .bp-lp {
+      padding: 20px 14px 32px;
+    }
+
+    .bp-lp-hero-copy,
+    .bp-lp-panel,
+    .bp-lp-form-panel {
+      padding: 34px 28px;
+    }
+
+    .bp-lp h1 {
+      font-size: 32px;
+    }
+
+    .bp-lp-summary,
+    .bp-lp-program {
+      grid-template-columns: 1fr;
+    }
+
+    .bp-lp-summary > div,
+    .bp-lp-program-item {
+      border-right: 0;
+      border-bottom: 1px solid var(--bp-line);
+    }
+
+    .bp-lp-summary > div:last-child,
+    .bp-lp-program-item:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .bp-lp {
+      font-size: 14px;
+    }
+
+    .bp-lp-hero-copy,
+    .bp-lp-panel,
+    .bp-lp-form-panel {
+      padding: 28px 18px;
+    }
+
+    .bp-lp h1 {
+      font-size: 27px;
+    }
+
+    .bp-lp-heading h2 {
+      font-size: 24px;
+    }
+
+    .bp-lp-callout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="bp-lp">
+  <div class="bp-lp-shell">
+    <section class="bp-lp-layout" aria-label="セミナー詳細と申込フォーム">
+      <div class="bp-lp-main">
+        <section class="bp-lp-hero">
+          <div class="bp-lp-hero-image">
+            <img src="https://kagami-fit.github.io/kenko-2027-mailmag-form-20260705/kenko-2027-0729/assets/mailmag-image-225.png" alt="健康経営優良法人認定2027の最新情報セミナー告知">
+          </div>
+          <div class="bp-lp-hero-copy">
+            <p class="bp-lp-eyebrow">Web Seminar</p>
+            <h1>健康経営優良法人認定2027に向けた準備を開始する企業様へ</h1>
+            <p>
+              7月中旬公開予定の最新要件を踏まえ、申請までのスケジュール、証跡管理、
+              社内の巻き込み、取得後の運用改善までを30分で整理するWebセミナーです。
+            </p>
+            <div class="bp-lp-summary" aria-label="セミナー概要">
+              <div>
+                <span>開催日</span>
+                <strong>2026年7月29日（水）</strong>
+              </div>
+              <div>
+                <span>時間</span>
+                <strong>12:20-12:50</strong>
+              </div>
+              <div>
+                <span>形式</span>
+                <strong>Web開催</strong>
+              </div>
+              <div>
+                <span>参加費</span>
+                <strong>無料</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bp-lp-panel" id="overview">
+          <div class="bp-lp-heading">
+            <p class="bp-lp-eyebrow">Overview</p>
+            <h2>開催概要</h2>
+          </div>
+          <div class="bp-lp-body">
+            <p>
+              健康経営優良法人認定2027に向けて、7月中旬に最新要件の公開が予定されています。
+              認定取得・更新を予定している企業様にとって、最新要件を早期に確認し、
+              申請までのスケジュール、必要な証跡、社内で準備すべき項目を整理しておくことが重要です。
+            </p>
+            <p>
+              近年の健康経営では、申請項目を満たすだけでなく、経営層の関与、従業員への浸透、
+              施策の実施状況、効果検証、継続的な改善まで含めた運用が求められています。
+            </p>
+            <p>
+              本セミナーでは、健康経営優良法人認定2027の最新要件を踏まえ、
+              認定取得・更新に向けて確認すべきポイントを30分で整理して解説します。
+            </p>
+          </div>
+          <div class="bp-lp-callout">
+            <img src="https://kagami-fit.github.io/kenko-2027-mailmag-form-20260705/kenko-2027-0729/assets/seminar-icon-requirements-imagegen2.png" alt="">
+            <p>
+              申請前の確認だけでなく、認定取得後の健康経営をどのように継続運用へつなげるかまで扱います。
+            </p>
+          </div>
+        </section>
+
+        <section class="bp-lp-panel" id="learn">
+          <div class="bp-lp-heading">
+            <p class="bp-lp-eyebrow">Seminar</p>
+            <h2>セミナーで分かること</h2>
+          </div>
+          <div class="bp-lp-program">
+            <div class="bp-lp-program-item">
+              <img src="https://kagami-fit.github.io/kenko-2027-mailmag-form-20260705/kenko-2027-0729/assets/seminar-icon-requirements-imagegen2.png" alt="">
+              <h3>最新要件の確認</h3>
+              <p>公開後に確認すべき変更点、申請項目、実務上の注意点を整理します。</p>
+            </div>
+            <div class="bp-lp-program-item">
+              <img src="https://kagami-fit.github.io/kenko-2027-mailmag-form-20260705/kenko-2027-0729/assets/seminar-icon-application-imagegen2.png" alt="">
+              <h3>申請準備の設計</h3>
+              <p>スケジュール、社内体制、証跡管理を申請前に見直す観点をまとめます。</p>
+            </div>
+            <div class="bp-lp-program-item">
+              <img src="https://kagami-fit.github.io/kenko-2027-mailmag-form-20260705/kenko-2027-0729/assets/seminar-icon-improvement-imagegen2.png" alt="">
+              <h3>運用改善への接続</h3>
+              <p>健康状態の把握、施策の優先順位づけ、経営層への報告材料づくりを扱います。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="bp-lp-panel" id="recommend">
+          <div class="bp-lp-heading">
+            <p class="bp-lp-eyebrow">Recommended</p>
+            <h2>こんな方におすすめ</h2>
+          </div>
+          <ul class="bp-lp-recommend">
+            <li>健康経営優良法人認定2027の申請・更新を予定している方</li>
+            <li>最新要件の確認ポイントや、昨年との違いを早めに把握したい方</li>
+            <li>申請までのスケジュール、証跡管理、社内の巻き込み方に不安がある方</li>
+            <li>認定取得後の健康施策を、効果検証や継続運用につなげたい方</li>
+            <li>部署別・職種別・年代別の健康課題を整理し、経営層への報告材料を整えたい方</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="bp-lp-form-panel" id="entry">
+        <div class="bp-lp-heading">
+          <p class="bp-lp-eyebrow">Entry Form</p>
+          <h2>セミナー申込フォーム</h2>
+          <p>必要事項をご入力のうえ、お申し込みください。担当者より参加方法をご案内します。</p>
+        </div>
+
+        [contact-form-7 id="REPLACE_FORM_ID" title="健康経営優良法人認定2027 セミナー申込"]
+
+        <p class="bp-lp-form-note">
+          フォームが表示されない場合は、Contact Form 7のショートコードIDを差し替えてください。
+        </p>
+      </aside>
+    </section>
+  </div>
+</div>
