@@ -126,7 +126,7 @@ dd {
 }
 
 main {
-  width: min(1180px, calc(100% - 40px));
+  width: min(1220px, calc(100% - 40px));
   margin: 22px auto 0;
 }
 
@@ -309,10 +309,10 @@ h1 {
 
 .application-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 420px);
   gap: 24px;
   align-items: start;
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 .content-column {
@@ -323,6 +323,19 @@ h1 {
 
 .application-layout .section-panel {
   margin-top: 0;
+}
+
+.application-layout .content-column .section-panel {
+  padding: 38px 42px;
+}
+
+.application-layout .hero-copy {
+  padding: 36px 40px;
+}
+
+.application-layout h1 {
+  max-width: 720px;
+  font-size: 36px;
 }
 
 .form-panel {
@@ -817,7 +830,7 @@ fieldset {
   display: grid;
   justify-items: center;
   gap: 10px;
-  width: min(1180px, calc(100% - 40px));
+  width: min(1220px, calc(100% - 40px));
   margin: 28px auto 0;
   padding: 28px 0;
   box-shadow: none;
@@ -860,7 +873,7 @@ fieldset {
   .header-inner,
   main,
   .site-footer {
-    width: min(100% - 28px, 1180px);
+    width: min(100% - 28px, 1220px);
   }
 
   .header-inner {
@@ -871,7 +884,9 @@ fieldset {
   }
 
   .hero-copy,
-  .section-panel {
+  .section-panel,
+  .application-layout .hero-copy,
+  .application-layout .content-column .section-panel {
     padding: 34px 28px;
   }
 
@@ -932,7 +947,9 @@ fieldset {
   }
 
   .hero-copy,
-  .section-panel {
+  .section-panel,
+  .application-layout .hero-copy,
+  .application-layout .content-column .section-panel {
     padding: 28px 18px;
   }
 

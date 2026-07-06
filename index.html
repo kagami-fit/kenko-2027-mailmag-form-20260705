@@ -34,46 +34,46 @@
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero-image">
-          <img src="./assets/mailmag-image-225.png" alt="健康経営優良法人認定2027の最新情報セミナー告知" />
-        </div>
-        <div class="hero-copy">
-          <p class="eyebrow">Web Seminar</p>
-          <h1>健康経営優良法人認定2027に向けた準備を開始する企業様へ</h1>
-          <p>
-            7月中旬公開予定の最新要件を踏まえ、申請までのスケジュール、証跡管理、
-            社内の巻き込み、取得後の運用改善までを30分で整理するWebセミナーです。
-          </p>
-          <div class="summary-grid" aria-label="セミナー概要">
-            <div>
-              <span>開催日</span>
-              <strong>2026年7月29日（水）</strong>
-            </div>
-            <div>
-              <span>時間</span>
-              <strong>12:20-12:50</strong>
-            </div>
-            <div>
-              <span>形式</span>
-              <strong>Web開催</strong>
-            </div>
-            <div>
-              <span>参加費</span>
-              <strong>無料</strong>
-            </div>
-          </div>
-          <div class="hero-actions">
-            <a class="primary-button" href="#form">
-              <i data-lucide="send"></i>
-              申し込む
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section class="application-layout" aria-label="セミナー詳細と申込フォーム">
         <div class="content-column">
+          <section class="hero">
+            <div class="hero-image">
+              <img src="./assets/mailmag-image-225.png" alt="健康経営優良法人認定2027の最新情報セミナー告知" />
+            </div>
+            <div class="hero-copy">
+              <p class="eyebrow">Web Seminar</p>
+              <h1>健康経営優良法人認定2027に向けた準備を開始する企業様へ</h1>
+              <p>
+                7月中旬公開予定の最新要件を踏まえ、申請までのスケジュール、証跡管理、
+                社内の巻き込み、取得後の運用改善までを30分で整理するWebセミナーです。
+              </p>
+              <div class="summary-grid" aria-label="セミナー概要">
+                <div>
+                  <span>開催日</span>
+                  <strong>2026年7月29日（水）</strong>
+                </div>
+                <div>
+                  <span>時間</span>
+                  <strong>12:20-12:50</strong>
+                </div>
+                <div>
+                  <span>形式</span>
+                  <strong>Web開催</strong>
+                </div>
+                <div>
+                  <span>参加費</span>
+                  <strong>無料</strong>
+                </div>
+              </div>
+              <div class="hero-actions">
+                <a class="primary-button" href="#form">
+                  <i data-lucide="send"></i>
+                  申し込む
+                </a>
+              </div>
+            </div>
+          </section>
+
           <section class="section-panel article-panel" id="overview">
             <div class="section-heading">
               <p class="eyebrow">Overview</p>
@@ -191,8 +191,8 @@
                 <input name="email" type="email" autocomplete="email" required />
               </label>
               <label>
-                <span>電話番号</span>
-                <input name="phone" type="tel" autocomplete="tel" />
+                <span>電話番号 <b>必須</b></span>
+                <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
               </label>
               <label>
                 <span>従業員規模</span>
