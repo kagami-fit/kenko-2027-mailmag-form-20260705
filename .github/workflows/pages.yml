@@ -37,6 +37,16 @@ jobs:
           cp assets/seminar-icon-application-imagegen2.png _site/assets/
           cp assets/seminar-icon-improvement-imagegen2.png _site/assets/
 
+          mkdir -p _site/kenko-2027-0729/assets
+          cp index.html styles.css app.js _site/kenko-2027-0729/
+          cp assets/favicon.png _site/kenko-2027-0729/assets/
+          cp assets/mailmag-image-201.png _site/kenko-2027-0729/assets/
+          cp assets/mailmag-image-204.jpg _site/kenko-2027-0729/assets/
+          cp assets/mailmag-image-225.png _site/kenko-2027-0729/assets/
+          cp assets/seminar-icon-requirements-imagegen2.png _site/kenko-2027-0729/assets/
+          cp assets/seminar-icon-application-imagegen2.png _site/kenko-2027-0729/assets/
+          cp assets/seminar-icon-improvement-imagegen2.png _site/kenko-2027-0729/assets/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
