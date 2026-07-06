@@ -1,7 +1,7 @@
 const SHEET_NAME = "申込一覧";
 const DEFAULT_SPREADSHEET_ID = "175biha_rd58pC8ixceY0nOM7ZLWS6AfSVoxVQqu0MYk";
 
-const HEADERS = [
+const FIELDS = [
   "submitted_at",
   "lead_status",
   "campaign_id",
@@ -21,6 +21,28 @@ const HEADERS = [
   "utm_campaign",
   "page_url",
   "privacy_consent",
+];
+
+const HEADERS = [
+  "送信日時",
+  "対応状況",
+  "キャンペーンID",
+  "セミナー名",
+  "開催日時",
+  "会社名",
+  "部署名",
+  "お名前",
+  "メールアドレス",
+  "電話番号",
+  "従業員規模",
+  "認定への取り組み状況",
+  "気になっているテーマ",
+  "事前に聞きたいこと",
+  "UTM Source",
+  "UTM Medium",
+  "UTM Campaign",
+  "申込ページURL",
+  "個人情報同意",
 ];
 
 function doGet() {
@@ -43,7 +65,7 @@ function doPost(e) {
   try {
     const payload = parsePayload_(e);
     const sheet = setupSheet();
-    sheet.appendRow(HEADERS.map((header) => normalizeCell_(payload[header])));
+    sheet.appendRow(FIELDS.map((field) => normalizeCell_(payload[field])));
 
     return jsonOutput_({
       ok: true,

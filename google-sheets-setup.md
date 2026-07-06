@@ -33,7 +33,7 @@ LP側は、Google Apps ScriptのWebアプリURLへ申込内容を送る実装に
 
 ## 転記される列
 
-`submitted_at`, `lead_status`, `campaign_id`, `seminar_title`, `seminar_date`, `company`, `department`, `name`, `email`, `phone`, `employee_size`, `certification_status`, `interests`, `message`, `utm_source`, `utm_medium`, `utm_campaign`, `page_url`, `privacy_consent`
+`送信日時`, `対応状況`, `キャンペーンID`, `セミナー名`, `開催日時`, `会社名`, `部署名`, `お名前`, `メールアドレス`, `電話番号`, `従業員規模`, `認定への取り組み状況`, `気になっているテーマ`, `事前に聞きたいこと`, `UTM Source`, `UTM Medium`, `UTM Campaign`, `申込ページURL`, `個人情報同意`
 
 ## 注意
 
