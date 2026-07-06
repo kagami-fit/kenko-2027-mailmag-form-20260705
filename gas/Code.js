@@ -23,7 +23,7 @@ const FIELDS = [
   "privacy_consent",
 ];
 
-const HEADERS = [
+const DEFAULT_HEADERS = [
   "送信日時",
   "対応状況",
   "キャンペーンID",
@@ -45,9 +45,47 @@ const HEADERS = [
   "個人情報同意",
 ];
 
+const CAMPAIGN_CONFIGS = {
+  "kenko-2027-seminar-0729": {
+    sheetName: "申込一覧",
+    headers: DEFAULT_HEADERS,
+  },
+  "mediphone-healthcheck-followup": {
+    sheetName: "メディフォン版申込",
+    headers: [
+      "送信日時",
+      "対応状況",
+      "キャンペーンID",
+      "資料名",
+      "相談種別",
+      "会社名",
+      "部署名",
+      "お名前",
+      "メールアドレス",
+      "電話番号",
+      "従業員規模",
+      "健診後施策の状況",
+      "気になっている課題",
+      "相談内容",
+      "UTM Source",
+      "UTM Medium",
+      "UTM Campaign",
+      "申込ページURL",
+      "個人情報同意",
+    ],
+  },
+};
+
+const DEFAULT_CONFIG = {
+  sheetName: SHEET_NAME,
+  headers: DEFAULT_HEADERS,
+};
+
 function doGet() {
   try {
-    setupSheet();
+    Object.keys(CAMPAIGN_CONFIGS).forEach((campaignId) => {
+      setupSheet(CAMPAIGN_CONFIGS[campaignId]);
+    });
     return jsonOutput_({
       ok: true,
       message: "BODY PALETTE seminar form endpoint is ready.",
@@ -64,7 +102,7 @@ function doGet() {
 function doPost(e) {
   try {
     const payload = parsePayload_(e);
-    const sheet = setupSheet();
+    const sheet = setupSheet(getCampaignConfig_(payload.campaign_id));
     sheet.appendRow(FIELDS.map((field) => normalizeCell_(payload[field])));
 
     return jsonOutput_({
@@ -80,15 +118,17 @@ function doPost(e) {
   }
 }
 
-function setupSheet() {
+function setupSheet(config) {
+  const sheetConfig = config || DEFAULT_CONFIG;
   const spreadsheet = getSpreadsheet_();
-  const sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.insertSheet(SHEET_NAME);
-  const headerRange = sheet.getRange(1, 1, 1, HEADERS.length);
+  const sheet =
+    spreadsheet.getSheetByName(sheetConfig.sheetName) || spreadsheet.insertSheet(sheetConfig.sheetName);
+  const headerRange = sheet.getRange(1, 1, 1, sheetConfig.headers.length);
   const currentHeaders = headerRange.getValues()[0];
   const headerIsEmpty = currentHeaders.every((value) => value === "");
 
-  if (headerIsEmpty || currentHeaders.join("\t") !== HEADERS.join("\t")) {
-    headerRange.setValues([HEADERS]);
+  if (headerIsEmpty || currentHeaders.join("\t") !== sheetConfig.headers.join("\t")) {
+    headerRange.setValues([sheetConfig.headers]);
   }
 
   sheet.setFrozenRows(1);
@@ -98,9 +138,13 @@ function setupSheet() {
     .setFontWeight("bold")
     .setWrap(true);
   sheet.getRange("A:A").setNumberFormat("yyyy-mm-dd hh:mm:ss");
-  sheet.autoResizeColumns(1, HEADERS.length);
+  sheet.autoResizeColumns(1, sheetConfig.headers.length);
 
   return sheet;
+}
+
+function getCampaignConfig_(campaignId) {
+  return CAMPAIGN_CONFIGS[campaignId] || DEFAULT_CONFIG;
 }
 
 function getSpreadsheet_() {

@@ -430,6 +430,18 @@ h1 {
   font-weight: 800;
 }
 
+.visual-callout {
+  grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+}
+
+.visual-callout img {
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
 .mail-grid {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -971,7 +983,8 @@ fieldset {
   .field-grid,
   .choice-grid,
   .info-table,
-  .article-callout {
+  .article-callout,
+  .visual-callout {
     grid-template-columns: 1fr;
   }
 

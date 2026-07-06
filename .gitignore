@@ -2,5 +2,6 @@ ABOUT.md
 form-spec.md
 mailmag-draft.md
 preview*.png
+tmp/
 .clasp.json
 .gas-autopilot.json

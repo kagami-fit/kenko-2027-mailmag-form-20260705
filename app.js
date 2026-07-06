@@ -36,8 +36,9 @@
         payload[key] = value;
       }
     }
-    payload.seminar_title = "健康経営優良法人認定2027 準備セミナー";
-    payload.seminar_date = "2026-07-29 12:20-12:50";
+    payload.seminar_title =
+      target.dataset.seminarTitle || "健康経営優良法人認定2027 準備セミナー";
+    payload.seminar_date = target.dataset.seminarDate || "2026-07-29 12:20-12:50";
     payload.submitted_at = new Date().toISOString();
     payload.page_url = window.location.href;
     payload.lead_status = "未対応";
@@ -50,18 +51,14 @@
       throw new Error("Google Sheetsの送信先URLがまだ設定されていません。");
     }
 
-    const response = await fetch(sheetEndpoint, {
+    await fetch(sheetEndpoint, {
       method: "POST",
+      mode: "no-cors",
       headers: {
         "Content-Type": "text/plain;charset=utf-8",
       },
       body: JSON.stringify(payload),
     });
-    const result = await response.json();
-
-    if (!response.ok || !result.ok) {
-      throw new Error(result.error || "Google Sheetsへの転記に失敗しました。");
-    }
   }
 
   function setSubmitting(isSubmitting) {

@@ -31,6 +31,8 @@ jobs:
           cp assets/seminar-icon-requirements-imagegen2.png _site/assets/
           cp assets/seminar-icon-application-imagegen2.png _site/assets/
           cp assets/seminar-icon-improvement-imagegen2.png _site/assets/
+          cp assets/mediphone-body-palette-hero.png _site/assets/
+          cp assets/mediphone-body-palette-diagram.png _site/assets/
 
           mkdir -p _site/kenko-2027-0729/assets
           cp index.html styles.css app.js _site/kenko-2027-0729/
@@ -41,6 +43,9 @@ jobs:
           cp assets/seminar-icon-requirements-imagegen2.png _site/kenko-2027-0729/assets/
           cp assets/seminar-icon-application-imagegen2.png _site/kenko-2027-0729/assets/
           cp assets/seminar-icon-improvement-imagegen2.png _site/kenko-2027-0729/assets/
+
+          mkdir -p _site/mediphone-healthcheck
+          cp mediphone-healthcheck/index.html _site/mediphone-healthcheck/
 
       - name: Publish gh-pages branch
         env:
